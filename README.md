@@ -81,57 +81,27 @@ This function expects a POST request with a JSON body containing the following f
   - wordCount (integer): The maximum number of words for the summary.
   - style (string): The desired style of the summary (e.g., formal, casual, etc.).
  
-### Testing the API Using Postman
+### Testing the URL Summarization Service with Postman
+Once you have the service running locally or deployed on Cloudflare Workers, you can test the API using Postman to ensure that it's functioning as expected. Here's how to test the service:
 
-## Open Postman
-Make sure you have Postman installed on your machine. You can download it from Postman's official website.
+## Step 1: Open Postman
+Install Postman from the official website if you haven't already.
+Open Postman on your system.
 
-## Create a New Request
-Open Postman and click the "New" button.
-Select "HTTP Request".
+## Step 2: Set Up a New Request
+Click New and select HTTP Request to create a new request.
+Select the POST method, as this API typically requires sending a URL and preferences in the body of the request.
+In the Request URL field, enter the local or deployed URL for your Cloudflare Worker API. For example:
+If testing locally with Wrangler: http://localhost:8787/summarize
+If deployed on Cloudflare: https://<your-worker-name>.workers.dev/summarize
 
-## Configure the Request
--  Set the HTTP method to POST.
--  URL: Set the request URL to either your local or deployed endpoint:
-  	- For local testing: http://127.0.0.1:8787
-		- For deployed Cloudflare Worker: https://your-worker-url.workers.dev
-## Set Up Headers
-In the Headers tab, add the following header:
-```bash
-Key: Content-Type
-Value: application/json
-```
-## Add the Request Body
-In the Body tab, select raw and set the format to JSON.
+## Step 3: Configure Request Headers
+Under the Headers tab, ensure the following header is added:
+Content-Type: application/json
 
-Here's an example of what your JSON request body might look like:
-```bash
-{
-  "url": "https://example.com",
-  "preferences": {
-    "wordCount": 100,
-    "style": "formal"
-  }
-}
-```
-- url: The URL from which to extract and summarize content.
-- preferences.wordCount: The desired maximum word count for the summary.
-- preferences.style: The style of the summary, such as "formal," "casual," etc.
-## Send the Request
-Click the "Send" button to send the request to your local server or deployed Cloudflare Worker.
-## View the Response
-Once the request is processed, Postman will display the response in the Body section.
+## Step 4: Set Up the Request Body
+Switch to the Body tab.
 
-A successful response might look like this:
-```bash
-{
-  "summary": "This is a summarized version of the content from the provided URL."
-}
-```
-If there are any errors, the response will include details like this:
-```bash
-{
-  "error": "Invalid URL",
-  "message": "The URL provided is either missing or not in a valid format. Please check the URL and try again."
-}
-```
+Choose raw and set the format to JSON.
+
+Add the following JSON structure to send the necessary data to the API:
