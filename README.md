@@ -30,8 +30,7 @@ This Cloudflare Worker script fetches content from a provided URL, extracts the 
 Clone this repository to your local machine:
 
 ```bash
-  git clone https://github.com/yourusername/project-name.git
-  cd project-name
+https://github.com/GrimCLown/-Content-Summarizer-Service-Task.git
 ```
 
 ### 2. Install dependencies:
@@ -53,7 +52,7 @@ OPENAI_API_KEY=your-openai-api-key
 To test the function locally, use any serverless framework or tool like wrangler (for Cloudflare Workers). If you're using wrangler, configure your wrangler.toml with your Cloudflare credentials and run the following command:
 
 ```bash
-wrangler dev
+npx wrangler dev
 ```
 
 ## Usage
