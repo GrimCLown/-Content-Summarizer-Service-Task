@@ -4,14 +4,6 @@ main = "src/index.js"
 compatibility_date = "2024-10-04"
 compatibility_flags = ["nodejs_compat"]
 
-
-# Ensure this is configured for local development
-miniflare = true
-
-# Environment Variables (secrets should be stored separately)
-[vars]
-OPENAI_API_KEY = "$OPENAI_API_KEY"
-
 # Workers Logs
 # Docs: https://developers.cloudflare.com/workers/observability/logs/workers-logs/
 # Configuration: https://developers.cloudflare.com/workers/observability/logs/workers-logs/#enable-workers-logs
