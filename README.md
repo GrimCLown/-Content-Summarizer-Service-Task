@@ -31,8 +31,8 @@ This Cloudflare Worker script fetches content from a provided URL, extracts the 
 Clone this repository to your local machine:
 
 ```bash
-  git clone https://github.com/GrimCLown/-Content-Summarizer-Service-Task.git
-  cd project-name
+git clone https://github.com/GrimCLown/Content-Summarizer-Service-Task.git
+cd Content-Summarizer-Service-Task
 ```
 
 ### Install dependencies:
