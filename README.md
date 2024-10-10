@@ -91,7 +91,8 @@ style (string): The desired style of the summary (e.g., formal, casual, etc.).
   - Testing the URL Summarization Service with Postman
 Once you have the service running locally or deployed on Cloudflare Workers, you can test the API using Postman to ensure it functions as expected.
 
-# Testing
+# Testing the URL Summarization Service with Postman
+Once you have the service running locally or deployed on Cloudflare Workers, you can test the API using Postman to ensure that it's functioning as expected.
 
 ## Step 1: Open Postman
 Install Postman from the official website if you haven’t already. Open Postman on your system.
