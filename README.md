@@ -55,18 +55,6 @@ npm install -g wrangler
 ```
 Ensure your wrangler.toml is configured correctly. You can use the following basic structure in your wrangler.toml:
 ```bash
-name = "url-summarization-service"
-type = "javascript"
-account_id = "your-cloudflare-account-id"
-workers_dev = true
-compatibility_date = "2024-10-10"
-
-[env.dev]
-vars = { OPENAI_API_KEY = "$OPENAI_API_KEY" }
-```
-Run the development server locally using:
-
-```bash
 npx wrangler dev
 ```
 
@@ -74,16 +62,19 @@ npx wrangler dev
 After testing locally, you can deploy the function to Cloudflare Workers:
 Make sure you're authenticated with Cloudflare. Run:
 ```bash
-wrangler login
+npx wrangler login
+```
+Add the Secret Key: You can add a secret key by running the following command:
+```bash
+npx wrangler secret put OPENAI_API_KEY
 ```
 Deploy the Worker by running:
 ```bash
-wrangler publish
+npx wrangler publish
 ```
 This will deploy the project to your Cloudflare account, and you'll get a unique URL for your Worker.
 
 ## Usage
-
 This function expects a POST request with a JSON body containing the following fields:
 - url (string): The URL from which to fetch and summarize content.
 - preferences (object)
