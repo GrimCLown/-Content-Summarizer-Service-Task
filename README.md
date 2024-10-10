@@ -42,11 +42,30 @@ npm install
 ```
 
 ## Set Up Environment Variables
-Create a \`.dev.vars\` or \`.env\` file and add your OpenAI API key:
+Create a \`.dev.vars\` and add your OpenAI API key:
 
 ```bash
 OPENAI_API_KEY=your-openai-api-key
 ```
+
+## Configure wrangler.toml to Enable Miniflare
+In your wrangler.toml file, ensure that miniflare is enabled for local development. This allows you to use environment variables locally.
+
+Add or update the following line in your wrangler.toml:
+
+```bash
+miniflare = true
+```
+Your wrangler.toml file should look something like this:
+
+```bash
+name = "your-worker-name"
+type = "javascript"
+account_id = "your-account-id"
+workers_dev = true
+miniflare = true
+```
+This configuration ensures that your OpenAI API key is available for local development using Miniflare, and it will be included when running the worker in your development environment.
 
 ## Running Locally
 
@@ -97,20 +116,36 @@ Once you have the service running locally or deployed on Cloudflare Workers, you
 ## Step 1: Open Postman
 Install Postman from the official website if you haven’t already. Open Postman on your system.
 
-## Step 2: Set Up a New Request
+## Step 2: Ensure the Service is Running
+Before proceeding, make sure your summarization service is either running locally or deployed on Cloudflare Workers:
+
+If running locally with Wrangler, ensure that it’s running by using the command:
+
+```bash
+npx wrangler dev
+```
+If deployed, confirm that the Cloudflare Worker is live and accessible via its URL.
+
+If it’s not yet deployed, you can deploy the Worker using the following command:
+```bash
+npx wrangler deploy
+```
+This will deploy your Cloudflare Worker and provide a live URL that you can use for testing.
+
+## Step 3: Set Up a New Request
 Click New and select HTTP Request to create a new request. Select the POST method. In the Request URL field, enter the local or deployed URL for your Cloudflare Worker API. For example:
 
 - If testing locally with Wrangler: http://localhost:8787/summarize
 - If deployed on Cloudflare: https://your-worker-subdomain.workers.dev/summarize
 
-## Step 3: Configure Request Headers
+## Step 4: Configure Request Headers
 Under the Headers tab, ensure the following header is added:
 
 ```bash
 Content-Type: application/json
 ```
 
-## Step 4: Set Up the Request Body
+## Step 5: Set Up the Request Body
 Switch to the Body tab.
 
 Choose raw and set the format to JSON.
@@ -130,10 +165,10 @@ Add the following JSON structure to send the necessary data to the API:
 - wordCount: The preferred word count for the summary.
 - style: The style of the summary (e.g., concise, detailed, casual, etc.).
 
-## Step 5: Send the Request
+## Step 6: Send the Request
 Once you’ve configured the headers and body, click Send to execute the request. Postman will send the data to your Cloudflare Worker, which will fetch the content from the specified URL, extract the plain text using Cheerio, and summarize it using the OpenAI API based on your preferences.
 
-## Step 6: Review the Response
+## Step 7: Review the Response
 In the Response section of Postman, you should see the summarized text returned by your Cloudflare Worker. The response will look something like this:
 
 ```bash
@@ -150,7 +185,7 @@ If there are any issues, such as an invalid URL or API error, you will see an er
 }
 ```
 
-## Step 7: Testing Error Handling
+## Step 8: Testing Error Handling
 You can also test the error-handling mechanisms by providing incorrect or missing data, such as:
 
   - Invalid URL formats.
