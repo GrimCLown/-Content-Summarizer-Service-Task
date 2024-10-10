@@ -105,3 +105,50 @@ Switch to the Body tab.
 Choose raw and set the format to JSON.
 
 Add the following JSON structure to send the necessary data to the API:
+```bash
+{
+  "url": "https://example.com",
+  "preferences": {
+    "wordCount": 150,
+    "style": "concise"
+  }
+}
+```
+url: The URL of the content you want to summarize (replace with the actual URL you are testing).
+wordCount: The preferred word count for the summary.
+style: The style of the summary (e.g., concise, detailed, casual, etc.).
+
+## Step 5: Send the Request
+Once you’ve configured the headers and body, click Send to execute the request.
+Postman will send the data to your Cloudflare Worker, which will fetch the content from the specified URL, extract the plain text using Cheerio, and summarize it using the OpenAI API based on your preferences.
+
+## Step 6: Review the Response
+In the Response section of Postman, you should see the summarized text returned by your Cloudflare Worker.
+The response will look something like this:
+```bash
+{
+  "summary": "This is a concise summary of the content from the provided URL."
+}
+```
+If there are any issues, such as an invalid URL or API error, you will see an error message in the response:
+
+```bash
+{
+  "error": "Invalid URL or content retrieval failure."
+}
+```
+
+## Step 7: Testing Error Handling
+You can also test the error-handling mechanisms by providing incorrect or missing data, such as:
+
+Invalid URL formats.
+Missing preferences (e.g., wordCount or style).
+Unreachable URLs.
+The expected responses should include relevant error messages, such as:
+
+```bash
+{
+  "error": "Please provide a valid URL."
+}
+```
+
