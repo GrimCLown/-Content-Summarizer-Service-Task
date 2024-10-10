@@ -42,7 +42,7 @@ npm install
 ```
 
 ## Set Up Environment Variables
-Create a .dev.vars or \`.env\` file and add your OpenAI API key:
+Create a \`.dev.vars\` or \`.env\` file and add your OpenAI API key:
 
 ```bash
 OPENAI_API_KEY=your-openai-api-key
@@ -90,6 +90,8 @@ This function expects a POST request with a JSON body containing the following f
 style (string): The desired style of the summary (e.g., formal, casual, etc.).
   - Testing the URL Summarization Service with Postman
 Once you have the service running locally or deployed on Cloudflare Workers, you can test the API using Postman to ensure it functions as expected.
+
+#Testing
 
 ## Step 1: Open Postman
 Install Postman from the official website if you haven’t already. Open Postman on your system.
